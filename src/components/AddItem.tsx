@@ -21,11 +21,7 @@ const AddItem = ({ addItem }: AddItemProps) => {
   }
 
   return (
-    <Stack
-      direction="row"
-      spacing={2}
-      justifyContent="space-between"
-      padding="10px">
+    <Stack direction="row" spacing={2} justifyContent="space-between">
       <TextField
         id="outlined-basic"
         label="Item"
