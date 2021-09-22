@@ -12,11 +12,15 @@ const App = () => {
     setList([item, ...list])
   }
 
+  const removeFromList = (index: number) => {
+    setList(list.filter((_, i) => i !== index))
+  }
+
   return (
     <MainLayout>
       <Header />
       <AddItem addItem={addToList} />
-      <MyItems list={list} />
+      <MyItems list={list} remove={removeFromList} />
     </MainLayout>
   )
 }
