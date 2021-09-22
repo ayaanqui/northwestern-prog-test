@@ -13,6 +13,10 @@ const AddItem = ({ addItem }: AddItemProps) => {
   }
 
   const submit = () => {
+    // Ignore if input is just whitespace
+    if (input.trim() === "") return
+
+    setInput("")
     addItem(input)
   }
 
@@ -29,6 +33,7 @@ const AddItem = ({ addItem }: AddItemProps) => {
         fullWidth
         style={{ flex: 3 }}
         onChange={updateInput}
+        value={input}
       />
 
       <Button
