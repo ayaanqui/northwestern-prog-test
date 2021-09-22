@@ -1,4 +1,4 @@
-import { List } from "@mui/material"
+import { Box, Chip, List, Typography, Stack } from "@mui/material"
 import Item from "./Item"
 
 export interface MyItemsProps {
@@ -8,11 +8,20 @@ export interface MyItemsProps {
 
 const MyItems = ({ list, remove }: MyItemsProps) => {
   return (
-    <List>
-      {list.map((item, i) => (
-        <Item value={item} index={i} key={`item#${i}`} remove={remove} />
-      ))}
-    </List>
+    <Box marginTop="2em">
+      <Stack direction="row" spacing={2}>
+        <Typography variant="h3" fontSize="1.5em">
+          My Items
+        </Typography>
+        <Chip label={list.length} />
+      </Stack>
+
+      <List>
+        {list.map((item, i) => (
+          <Item value={item} index={i} key={`item#${i}`} remove={remove} />
+        ))}
+      </List>
+    </Box>
   )
 }
 
