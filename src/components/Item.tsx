@@ -18,7 +18,7 @@ const Item = ({ value, index, remove }: ItemProps) => {
           <DeleteIcon />
         </IconButton>
       }>
-      <ListItemText primary={value} secondary="Jan 9, 2014" />
+      <ListItemText primary={value} />
     </ListItem>
   )
 }
