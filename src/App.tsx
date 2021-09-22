@@ -1,9 +1,22 @@
-import React from "react"
-import "./App.css"
-import { Button } from "@mui/material"
+import React, { useState } from "react"
+import "./styles/App.css"
+import MainLayout from "./layout/MainLayout"
+import Header from "./components/Header"
+import AddItem from "./components/AddItem"
 
-function App() {
-  return <Button variant="contained">Hello world!</Button>
+const App = () => {
+  const [list, setList] = useState<Array<String>>([])
+
+  const addToList = (item: string) => {
+    setList([item, ...list])
+  }
+
+  return (
+    <MainLayout>
+      <Header />
+      <AddItem />
+    </MainLayout>
+  )
 }
 
 export default App
