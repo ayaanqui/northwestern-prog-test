@@ -1,9 +1,12 @@
+import { Typography } from "@mui/material"
 import { Box } from "@mui/system"
 
 const Header = () => {
   return (
-    <Box textAlign="center" marginBottom="3em">
-      <h1>Manage My Items</h1>
+    <Box textAlign="center" marginBottom="2rem">
+      <Typography variant="h1" fontSize="2.5rem">
+        Manage My Items
+      </Typography>
     </Box>
   )
 }
