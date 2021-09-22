@@ -1,34 +1,27 @@
-import { useState } from "react"
+import { useReducer } from "react"
 import "./styles/App.css"
 import MainLayout from "./layout/MainLayout"
 import Header from "./components/Header"
 import AddItem from "./components/AddItem"
 import MyItems from "./components/MyItems"
+import { initialState, reducer } from "./store/reducer"
 
 const App = () => {
-  const [list, setList] = useState<Array<string>>([])
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  /**
-   * Given a string `item`, add it to the list
-   * @param item String value
-   */
   const addToList = (item: string) => {
-    setList([item, ...list])
+    dispatch({ type: "ADD", payload: { value: item } })
   }
 
-  /**
-   * Given a postition in the array `list`, remove the element from the list
-   * @param index Postition of the item in list
-   */
   const removeFromList = (index: number) => {
-    setList(list.filter((_, i) => i !== index))
+    dispatch({ type: "REMOVE", payload: { index } })
   }
 
   return (
     <MainLayout>
       <Header />
       <AddItem addItem={addToList} />
-      <MyItems list={list} remove={removeFromList} />
+      <MyItems list={state.list} remove={removeFromList} />
     </MainLayout>
   )
 }
