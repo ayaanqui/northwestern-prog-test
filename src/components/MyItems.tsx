@@ -1,20 +1,17 @@
 import { Box, List } from "@mui/material"
 import Item from "./Item"
 import MyItemsHeader from "./MyItemsHeader"
+import { StateContext } from "../store/reducer"
+import { useContext, useEffect, useState } from "react"
 
-export interface MyItemsProps {
-  list: Array<string>
-  remove: (index: number) => void
-}
-
-const MyItems = ({ list, remove }: MyItemsProps) => {
+const MyItems = ({ list }: { list: Array<string> }) => {
   return (
     <Box marginTop="2em">
       <MyItemsHeader numItems={list.length} />
 
       <List>
         {list.map((item, i) => (
-          <Item value={item} index={i} key={`item#${i}`} remove={remove} />
+          <Item value={item} index={i} key={`item#${i}`} />
         ))}
       </List>
     </Box>

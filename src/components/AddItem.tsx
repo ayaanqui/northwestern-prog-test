@@ -1,11 +1,9 @@
 import { Button, Stack, TextField } from "@mui/material"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { StateContext } from "../store/reducer"
 
-export interface AddItemProps {
-  addItem: (item: string) => void
-}
-
-const AddItem = ({ addItem }: AddItemProps) => {
+const AddItem = () => {
+  const { dispatch } = useContext(StateContext)
   const [input, setInput] = useState<string>("")
 
   const updateInput = (event: any) => {
@@ -17,7 +15,7 @@ const AddItem = ({ addItem }: AddItemProps) => {
     if (input.trim() === "") return
 
     setInput("")
-    addItem(input)
+    dispatch({ type: "ADD", payload: { value: input } })
   }
 
   return (

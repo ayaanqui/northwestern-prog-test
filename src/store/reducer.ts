@@ -1,12 +1,30 @@
-export const initialState = {
-  list: Array<string>(),
-}
-
+import { Dispatch, createContext } from "react"
 export interface State {
   list: Array<string>
 }
 
-export const reducer = (state: State, action: any) => {
+export const initialState: State = {
+  list: Array<string>(),
+}
+
+export interface ActionAdd {
+  type: "ADD"
+  payload: { value: string }
+}
+
+export interface ActionRemove {
+  type: "REMOVE"
+  payload: { index: number }
+}
+
+export interface StateContextProps {
+  state: State
+  dispatch: Dispatch<ActionAdd | ActionRemove>
+}
+
+export const StateContext = createContext({} as StateContextProps)
+
+export const reducer = (state: State, action: ActionAdd | ActionRemove) => {
   switch (action.type) {
     case "ADD":
       return { list: [action.payload.value, ...state.list] }
