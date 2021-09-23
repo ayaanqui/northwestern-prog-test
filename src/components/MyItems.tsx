@@ -1,8 +1,6 @@
 import { Box, List } from "@mui/material"
 import Item from "./Item"
 import MyItemsHeader from "./MyItemsHeader"
-import { StateContext } from "../store/reducer"
-import { useContext, useEffect, useState } from "react"
 
 const MyItems = ({ list }: { list: Array<string> }) => {
   return (
